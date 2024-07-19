@@ -1,4 +1,3 @@
-// app/Http/Controllers/HomeController.php
 <?php
 
 namespace App\Http\Controllers;
@@ -10,7 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $annonces = Annonce::latest()->take(10)->get();
-        return view('home', compact('annonces'));
+        // Récupérer les annonces de la base de données
+        $annonces = Annonce::all();
+
+        // Passer les annonces à la vue
+        return view('welcome', compact('annonces'));
     }
 }
