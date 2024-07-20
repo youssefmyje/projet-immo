@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +47,7 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Route pour la page de paramètres
+Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit')->middleware('auth');
+Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware('auth');
