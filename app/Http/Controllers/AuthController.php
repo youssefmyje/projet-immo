@@ -46,4 +46,10 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('message', 'Inscription réussie. Veuillez vous connecter.');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('welcome');
+    }
 }
