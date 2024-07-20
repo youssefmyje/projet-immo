@@ -3,12 +3,12 @@
 
 /* Palette de couleurs */
 :root {
-    --primary-color: #326273; 
-    --secondary-color: #457B9D; 
-    --accent-color: #F1FAEE; 
+    --primary-color: #326273;
+    --secondary-color: #457B9D;
+    --accent-color: #F1FAEE;
     --light-green-color: #6D8A5E;
-    --green-color: #9DBF2E; 
-    --background-color: #f5f5f5; 
+    --green-color: #9DBF2E;
+    --background-color: #f5f5f5;
 }
 
 body {
@@ -165,4 +165,333 @@ nav ul li.show .dropdown-menu {
 
 .fas.fa-user-circle:hover {
     color: var(--green-color);
+}
+
+/* Ajout des styles pour la section de présentation et le carrousel */
+.presentation-section {
+    background-color: var(--accent-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.presentation-section h1, .presentation-section h2 {
+    color: var(--primary-color);
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.presentation-section p {
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.additional-section .card {
+    background-color: var(--accent-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.additional-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.additional-section .card-title {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.additional-section .card-text {
+    color: var(--secondary-color);
+}
+
+.additional-section .fas {
+    margin-bottom: 15px;
+}
+
+.additional-section .card {
+    background-color: var(--accent-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.additional-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.additional-section .card-title {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.additional-section .blockquote {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.additional-section .blockquote-footer {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.additional-section .form-control {
+    background-color: #fff;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+}
+
+.additional-section .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.additional-section .btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+:root {
+    --color1: #2C6D8E; /* Couleur bleu foncé */
+    --color2: #50799E; /* Couleur bleu moyen */
+    --color3: #E6EEF6; /* Couleur bleu très clair */
+    --color4: #76934A; /* Couleur vert */
+    --color5: #A8B545; /* Couleur vert clair */
+}
+
+.testimonial-form {
+    background-color: var(--color3);
+    border: 1px solid var(--color1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.testimonial-form label {
+    color: var(--color1);
+}
+
+.testimonial-form .form-control {
+    border: 1px solid var(--color1);
+    border-radius: 4px;
+}
+
+.testimonial-form .btn-primary {
+    background-color: var(--color4);
+    border-color: var(--color4);
+}
+
+.testimonial-form .btn-primary:hover {
+    background-color: var(--color5);
+    border-color: var(--color5);
+}
+
+.footer {
+    background-color: var(--color1);
+    color: white;
+    padding: 20px 0;
+}
+
+.footer a {
+    color: var(--color3);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--color5);
+    text-decoration: underline;
+}
+
+.footer .social-icons i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+.footer .social-icons i:hover {
+    color: var(--color4);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--color1);
+    background-color: var(--color3);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: var(--color1);
+}
+
+.section-title {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--color1);
+}
+
+.section-content {
+    background-color: var(--color3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.team-member {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    margin-top: 10px;
+    color: var(--color2);
+}
+
+.team-member p {
+    color: var(--color1);
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+
+/* Style pour le menu utilisateur */
+#user-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: var(--color3);
+    border: 1px solid var(--color1);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#user-menu a {
+    display: block;
+    color: var(--color1);
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+#user-menu a:hover {
+    background: var(--color4);
+    color: #fff;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+#user-menu button {
+    background: none;
+    border: none;
+    color: var(--color2);
+    cursor: pointer;
+    padding: 5px 0;
+    width: 100%;
+    text-align: left;
+}
+
+#user-menu button:hover {
+    background: var(--color4);
+    color: #fff;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+
+
+/* Style pour la page des paramètres */
+.settings-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: var(--color3);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-container h1 {
+    color: var(--color1);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.settings-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-container label {
+    color: var(--color1);
+    margin-bottom: 5px;
+}
+
+.settings-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color2);
+    border-radius: 4px;
+}
+
+.settings-container button {
+    background-color: var(--color4);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.settings-container button:hover {
+    background-color: var(--color5);
+}
+
+.settings-container .error-list {
+    background: var(--color4);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.settings-container .success-message {
+    background: var(--color4);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.white-text {
+    color: white;
 }

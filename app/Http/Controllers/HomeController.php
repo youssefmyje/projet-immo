@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Annonce;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,9 @@ class HomeController extends Controller
     {
         // Récupérer les annonces de la base de données
         $annonces = Annonce::all();
+        $testimonials = Testimonial::all();
 
         // Passer les annonces à la vue
-        return view('welcome', compact('annonces'));
+        return view('welcome', compact('annonces', 'testimonials'));
     }
 }

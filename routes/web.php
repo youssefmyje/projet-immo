@@ -51,3 +51,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 // Route pour la page de paramètres
 Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit')->middleware('auth');
 Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware('auth');
+
+
+use App\Http\Controllers\TestimonialController;
+
+
+Route::post('/testimonials', [TestimonialController::class, 'store']);
