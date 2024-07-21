@@ -68,6 +68,16 @@
         .contact-form-submit:hover {
             background-color: #A6B729;
         }
+
+        .success-message {
+            background-color: #6d8d44;
+            /* Utilisation de la couleur vert clair de la palette */
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -77,11 +87,13 @@
     <div class="container">
         <div class="contact-header">
             <h1>Contactez-nous</h1>
-            @if (session('message'))
-            <p>{{ session('message') }}</p>
-            @endif
         </div>
         <div class="contact-container">
+            @if (session('message'))
+            <div class="success-message">
+                {{ session('message') }}
+            </div>
+            @endif
             <form action="{{ route('send.contact') }}" method="POST">
                 @csrf
                 <div class="contact-form-group">
