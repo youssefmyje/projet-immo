@@ -56,3 +56,6 @@ Route::post('/settings', [SettingsController::class, 'update'])->name('settings.
 
 
 Route::post('/testimonials', [TestimonialController::class, 'store']);
+
+Route::get('/annonces/create', [AnnonceController::class, 'create'])->name('annonces.create')->middleware('auth');
+Route::post('/annonces', [AnnonceController::class, 'store'])->name('annonces.store')->middleware('auth');

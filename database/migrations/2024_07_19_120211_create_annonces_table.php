@@ -8,20 +8,18 @@ class CreateAnnoncesTable extends Migration
 {
     public function up()
     {
-        if (!Schema::hasTable('annonces')) {
-            Schema::create('annonces', function (Blueprint $table) {
-                $table->id();
-                $table->string('titre');
-                $table->text('description');
-                $table->decimal('prix', 10, 2);
-                $table->string('localisation');
-                $table->integer('surface');
-                $table->integer('nombre_chambres');
-                $table->integer('nombre_salles_de_bain');
-                $table->string('type');
-                $table->timestamps();
-            });
-        }
+        Schema::create('annonces', function (Blueprint $table) {
+            $table->id(); // Assurez-vous que 'id' est auto-incrémenté
+            $table->string('titre');
+            $table->text('description');
+            $table->decimal('prix', 10, 2);
+            $table->string('localisation');
+            $table->integer('surface');
+            $table->integer('nombre_chambres');
+            $table->integer('nombre_salles_de_bain');
+            $table->string('type');
+            $table->timestamps();
+        });
     }
 
     public function down()
