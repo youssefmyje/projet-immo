@@ -36,7 +36,7 @@ class AnnonceController extends Controller
         $annonce->nombre_chambres = $request->nombre_chambres;
         $annonce->nombre_salles_de_bain = $request->nombre_salles_de_bain;
         $annonce->type = $request->type;
-        $annonce->id = Auth::id();
+        $annonce->user_id = Auth::id();
         $annonce->save();
 
         if ($request->hasfile('photos')) {

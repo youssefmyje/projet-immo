@@ -11,7 +11,7 @@ class Annonce extends Model
 
     protected $fillable = [
         'titre', 'description', 'prix', 'localisation', 'surface',
-        'nombre_chambres', 'nombre_salles_de_bain', 'type', 'photos', 'id'
+        'nombre_chambres', 'nombre_salles_de_bain', 'type', 'photos', 'user_id'
     ];
 
     protected $casts = [
