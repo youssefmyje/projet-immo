@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
+    public function index()
+    {
+        $annonces = Annonce::all();
+        return view('pages.listings', compact('annonces'));
+    }
+
     public function create()
     {
         return view('annonces.create');

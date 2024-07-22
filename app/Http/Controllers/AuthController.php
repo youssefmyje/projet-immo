@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -19,10 +18,15 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+            $request->session()->regenerate();
+
+            $redirect = $request->input('redirect', route('welcome'));
+            return redirect()->intended($redirect);
         }
 
-        return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+        return back()->withErrors([
+            'email' => 'Les informations d\'identification fournies sont incorrectes.',
+        ])->onlyInput('email');
     }
 
     public function showRegisterForm()
@@ -35,21 +39,27 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('login')->with('message', 'Inscription réussie. Veuillez vous connecter.');
+        Auth::login($user);
+
+        return redirect()->route('welcome');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('welcome');
     }
 }

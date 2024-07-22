@@ -10,7 +10,9 @@
 
 <body>
     @include('partials.nav')
+
     <h1>Liste des annonces</h1>
+
     <div class="annonces">
         @foreach($annonces as $annonce)
         <div class="annonce">

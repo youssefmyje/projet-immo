@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         // Récupérer les annonces de la base de données
-        $annonces = Annonce::all();
+        $annonces = Annonce::orderBy('created_at', 'desc')->take(3)->get();
         $testimonials = Testimonial::all();
 
         // Passer les annonces à la vue
