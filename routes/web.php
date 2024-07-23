@@ -71,3 +71,6 @@ Route::get('/listings', [AnnonceController::class, 'index'])->name('listings.ind
 Route::get('/annonces', [AnnonceController::class, 'index'])->name('annonces.index');
 Route::get('/annonces/create', [AnnonceController::class, 'create'])->name('annonces.create');
 Route::post('/annonces', [AnnonceController::class, 'store'])->name('annonces.store');
+
+// Route pour voir les détails d'une annonce
+Route::get('/listings/{id}', [AnnonceController::class, 'show'])->name('annonces.show');

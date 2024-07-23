@@ -92,7 +92,7 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ $annonce->titre }}</h3>
                         <p class="card-text">{{ $annonce->description }}</p>
-                        <a href="{{ url('/listings/' . $annonce->id) }}" class="btn btn-primary">Voir les détails</a>
+                        <a href="{{ route('annonces.show', $annonce->id) }}" class="btn btn-link">Voir les détails</a>
                     </div>
                 </div>
             </div>
