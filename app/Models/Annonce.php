@@ -10,8 +10,8 @@ class Annonce extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titre', 'description', 'prix', 'localisation', 'surface',
-        'nombre_chambres', 'nombre_salles_de_bain', 'type', 'photos', 'user_id'
+        'user_id', 'titre', 'description', 'prix', 'localisation', 'surface',
+        'nombre_chambres', 'nombre_salles_de_bain', 'type', 'photos',
     ];
 
     protected $casts = [

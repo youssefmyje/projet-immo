@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            /* Définissez la hauteur que vous souhaitez */
+            object-fit: cover;
+            /* Ajustez cette propriété selon vos besoins */
+        }
+    </style>
 </head>
 
 <body>
@@ -54,6 +63,32 @@
             @foreach($annonces as $annonce)
             <div class="col-md-4">
                 <div class="annonce card mb-4">
+                    @if($annonce->photos)
+                    @php
+                    $photos = json_decode($annonce->photos);
+                    @endphp
+                    @if(is_array($photos) && count($photos) > 0)
+                    <div id="carousel-{{$annonce->id}}" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach($photos as $index => $photo)
+                            <div class="carousel-item @if($index == 0) active @endif">
+                                <img src="{{ asset('photos/' . $photo) }}" class="d-block w-100" alt="Image de l'annonce">
+                            </div>
+                            @endforeach
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-{{$annonce->id}}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-{{$annonce->id}}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    @endif
+                    @else
+                    <img src="{{ asset('photos/default.jpg') }}" alt="Image de l'annonce" class="d-block w-100" style="height: 300px; object-fit: cover;">
+                    @endif
                     <div class="card-body">
                         <h3 class="card-title">{{ $annonce->titre }}</h3>
                         <p class="card-text">{{ $annonce->description }}</p>
@@ -195,10 +230,6 @@
         </div>
     </section>
 
-
-
-
-
     <!-- Footer -->
     <footer class="footer text-center">
         <div class="container">
@@ -234,7 +265,6 @@
         </div>
     </footer>
 
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -258,8 +288,12 @@
                     if (data.success) {
                         // Créer un nouvel élément de témoignage
                         const testimonialList = document.getElementById('testimonialsAccordion');
-                        const newTestimonialId = `heading${data.testimonial.id}`;
-                        const newTestimonialCollapseId = `collapse${data.testimonial.id}`;
+                        const newTestimonialId = heading$ {
+                            data.testimonial.id
+                        };
+                        const newTestimonialCollapseId = collapse$ {
+                            data.testimonial.id
+                        };
                         const newTestimonial = document.createElement('div');
                         newTestimonial.classList.add('card');
                         newTestimonial.innerHTML = `
@@ -290,9 +324,6 @@
                 });
         });
     </script>
-
-
-
 </body>
 
 </html>

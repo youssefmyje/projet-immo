@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
-    public function index()
-    {
-        $annonces = Annonce::all();
-        return view('pages.listings', compact('annonces'));
-    }
-
     public function create()
     {
         return view('annonces.create');
@@ -45,6 +39,7 @@ class AnnonceController extends Controller
         $annonce->user_id = Auth::id();
         $annonce->save();
 
+        $data = [];
         if ($request->hasfile('photos')) {
             foreach ($request->file('photos') as $file) {
                 $name = time() . rand(1, 100) . '.' . $file->extension();
@@ -56,5 +51,11 @@ class AnnonceController extends Controller
         }
 
         return redirect()->route('annonces.create')->with('success', 'Annonce ajoutée avec succès.');
+    }
+
+    public function index()
+    {
+        $annonces = Annonce::all();
+        return view('annonces.index', compact('annonces'));
     }
 }

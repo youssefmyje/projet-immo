@@ -71,8 +71,8 @@
             </div>
 
             <div class="form-group">
-                <label for="images">Images:</label>
-                <input type="file" id="images" name="images[]" class="form-control-file" multiple>
+                <label for="photos">Images:</label>
+                <input type="file" id="images" name="photos[]" class="form-control-file" multiple>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Ajouter</button>

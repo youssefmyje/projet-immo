@@ -66,4 +66,8 @@ Route::get('/sell', function () {
 })->name('sell')->middleware('auth');
 
 // Route pour la page "Liste des annonces"
-Route::get('/listings', [AnnonceController::class, 'index'])->name('listings');
+Route::get('/listings', [AnnonceController::class, 'index'])->name('listings.index');
+
+Route::get('/annonces', [AnnonceController::class, 'index'])->name('annonces.index');
+Route::get('/annonces/create', [AnnonceController::class, 'create'])->name('annonces.create');
+Route::post('/annonces', [AnnonceController::class, 'store'])->name('annonces.store');

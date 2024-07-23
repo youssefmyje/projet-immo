@@ -84,7 +84,23 @@
                     $photos = json_decode($annonce->photos);
                     @endphp
                     @if(is_array($photos) && count($photos) > 0)
-                    <img src="{{ asset('photos/' . $photos[0]) }}" alt="Image de l'annonce">
+                    <div id="carousel-{{$annonce->id}}" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach($photos as $index => $photo)
+                            <div class="carousel-item @if($index == 0) active @endif">
+                                <img src="{{ asset('photos/' . $photo) }}" class="d-block w-100" alt="Image de l'annonce">
+                            </div>
+                            @endforeach
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-{{$annonce->id}}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-{{$annonce->id}}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                     @endif
                     @else
                     <img src="{{ asset('photos/default.jpg') }}" alt="Image de l'annonce">
