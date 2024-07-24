@@ -27,7 +27,8 @@ Route::get('/about', function () {
 // Route pour la page "Vendre un bien"
 Route::get('/sell', function () {
     return view('pages.sell');
-})->name('sell');
+})->name('sell')->middleware('auth');
+
 
 // Route pour la page "Liste des annonces"
 Route::get('/listings', [AnnonceController::class, 'index'])->name('listings.index');
