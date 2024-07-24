@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Annonce;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AnnonceController extends Controller
 {
@@ -117,5 +118,38 @@ class AnnonceController extends Controller
         $annonce->delete();
 
         return redirect()->route('admin.index')->with('success', 'Annonce supprimée avec succès.');
+    }
+
+    public function search(Request $request)
+    {
+        Log::info('Request parameters:', $request->all());
+
+        $query = Annonce::query();
+
+        if ($request->filled('transaction')) {
+            Log::info('Filtering by transaction:', [$request->transaction]);
+            $query->where('type', $request->transaction);
+        }
+
+        if ($request->filled('location')) {
+            Log::info('Filtering by location:', [$request->location]);
+            $query->whereRaw('LOWER(localisation) LIKE ?', ['%' . strtolower($request->location) . '%']);
+        }
+
+        if ($request->filled('budget_min')) {
+            Log::info('Filtering by budget_min:', [$request->budget_min]);
+            $query->where('prix', '>=', $request->budget_min);
+        }
+
+        if ($request->filled('budget_max')) {
+            Log::info('Filtering by budget_max:', [$request->budget_max]);
+            $query->where('prix', '<=', $request->budget_max);
+        }
+
+        $annonces = $query->get();
+
+        Log::info('Filtered annonces:', $annonces->toArray());
+
+        return view('annonces.index', compact('annonces'));
     }
 }

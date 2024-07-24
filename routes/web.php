@@ -66,3 +66,5 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::post('/users/{user}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('users.toggleAdmin');
 });
+
+Route::get('/search', [AnnonceController::class, 'search'])->name('listings.search');

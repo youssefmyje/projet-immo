@@ -20,21 +20,20 @@
 </head>
 
 <body>
-    <!-- Barre de navigation -->
     @include('partials.nav')
 
     <!-- Section de recherche -->
     <section class="search-section container mt-5">
-        <h1 class="text-center mb-4 white-text">Recherche de biens immobiliers</h1>
-        <form action="{{ url('/listings') }}" method="GET" class="form-row justify-content-center">
+        <h1 class="text-center mb-4">Recherche de biens immobiliers</h1>
+        <form action="{{ route('listings.search') }}" method="GET" class="form-inline mb-4">
             <div class="form-group col-md-12 text-center">
                 <label for="transaction" class="mr-3">Transaction:</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="buy" name="transaction" value="buy">
+                    <input class="form-check-input" type="radio" id="buy" name="transaction" value="acheter">
                     <label class="form-check-label" for="buy">Acheter</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="rent" name="transaction" value="rent">
+                    <input class="form-check-input" type="radio" id="rent" name="transaction" value="louer">
                     <label class="form-check-label" for="rent">Louer</label>
                 </div>
             </div>

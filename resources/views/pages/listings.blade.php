@@ -100,6 +100,31 @@
         </div>
     </div>
 
+    <form action="{{ route('listings.search') }}" method="GET" class="form-inline">
+        <div class="form-group">
+            <label for="type">Transaction:</label>
+            <select name="type" id="type" class="form-control">
+                <option value="">Tous</option>
+                <option value="acheter">Acheter</option>
+                <option value="louer">Louer</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="localisation">Localisation:</label>
+            <input type="text" name="localisation" id="localisation" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="budget_min">Budget Min:</label>
+            <input type="number" name="budget_min" id="budget_min" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="budget_max">Budget Max:</label>
+            <input type="number" name="budget_max" id="budget_max" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </form>
+
+
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
