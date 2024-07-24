@@ -5,7 +5,7 @@
         <li><a href="{{ url('/') }}">Accueil</a></li>
         <li><a href="{{ url('/contact') }}">Contact</a></li>
         <li><a href="{{ url('/about') }}">Qui sommes-nous</a></li>
-        <li><a href="{{ url('/sell') }}">Vendre un bien</a></li>
+        <li><a href="{{ url('/annonces/create') }}">Vendre un bien</a></li>
         <li><a href="{{ url('/listings') }}">Liste des annonces</a></li>
         @auth
         <li><a href="{{ url('/annonces/create') }}">Ajouter une annonce</a></li>

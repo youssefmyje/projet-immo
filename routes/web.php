@@ -26,7 +26,7 @@ Route::get('/about', function () {
 
 // Route pour la page "Vendre un bien"
 Route::get('/sell', function () {
-    return view('pages.sell');
+    return view('annonces.create');
 })->name('sell')->middleware('auth');
 
 
