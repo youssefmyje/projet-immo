@@ -32,7 +32,18 @@
             <p>Aucune photo disponible.</p>
             @endif
         </div>
-    </div>
+    </div> @if(Auth::check())
+    <form action="{{ route('favorites.toggle', $annonce->id) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">
+            @if(Auth::user()->favorites->contains($annonce->id))
+            Retirer des Favoris
+            @else
+            Ajouter aux Favoris
+            @endif
+        </button>
+    </form>
+    @endif
 </body>
 
 </html>

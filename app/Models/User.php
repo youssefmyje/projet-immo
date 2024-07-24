@@ -61,4 +61,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // app/Models/User.php
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Annonce::class, 'favorites')->withTimestamps();
+    }
 }

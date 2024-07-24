@@ -17,4 +17,9 @@ class Annonce extends Model
     protected $casts = [
         'photos' => 'array',
     ];
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+    }
 }

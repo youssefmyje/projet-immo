@@ -10,18 +10,15 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'comment' => 'required|string|max:255',
-            'name' => 'required|string|max:50',
+            'name' => 'required|string|max:255',
+            'comment' => 'required|string',
         ]);
 
-        $testimonial = Testimonial::create([
-            'comment' => $request->comment,
-            'name' => $request->name,
-        ]);
+        $testimonial = new Testimonial();
+        $testimonial->name = $request->name;
+        $testimonial->comment = $request->comment;
+        $testimonial->save();
 
-        return response()->json([
-            'success' => true,
-            'testimonial' => $testimonial
-        ]);
+        return redirect()->back()->with('success', 'Votre témoignage a été ajouté avec succès.');
     }
 }

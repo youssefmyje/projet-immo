@@ -15,7 +15,8 @@
             </span>
 
             <div id="user-menu" style="display:none;">
-                <a href="{{ url('/settings') }}">Settings</a>
+                <a href="{{ url('/settings') }}">Paramètres</a>
+                <a href="{{ route('favorites.index') }}">Favoris</a> <!-- Lien ajouté pour les favoris -->
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit">Déconnexion</button>

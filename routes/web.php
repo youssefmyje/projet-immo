@@ -7,17 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AnnonceController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
@@ -38,9 +30,7 @@ Route::get('/sell', function () {
 })->name('sell');
 
 // Route pour la page "Liste des annonces"
-Route::get('/listings', function () {
-    return view('pages.listings');
-})->name('listings');
+Route::get('/listings', [AnnonceController::class, 'index'])->name('listings.index');
 
 // Route pour la page de connexion/inscription
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -54,23 +44,24 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit')->middleware('auth');
 Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware('auth');
 
+Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
 
-Route::post('/testimonials', [TestimonialController::class, 'store']);
-
+// Routes pour les annonces
 Route::get('/annonces/create', [AnnonceController::class, 'create'])->name('annonces.create')->middleware('auth');
 Route::post('/annonces', [AnnonceController::class, 'store'])->name('annonces.store')->middleware('auth');
-
-// Route pour la page "Vendre un bien"
-Route::get('/sell', function () {
-    return view('pages.sell');
-})->name('sell')->middleware('auth');
-
-// Route pour la page "Liste des annonces"
-Route::get('/listings', [AnnonceController::class, 'index'])->name('listings.index');
-
-Route::get('/annonces', [AnnonceController::class, 'index'])->name('annonces.index');
-Route::get('/annonces/create', [AnnonceController::class, 'create'])->name('annonces.create');
-Route::post('/annonces', [AnnonceController::class, 'store'])->name('annonces.store');
-
-// Route pour voir les détails d'une annonce
+Route::get('/annonces/{id}/edit', [AnnonceController::class, 'edit'])->name('annonces.edit')->middleware('auth');
+Route::put('/annonces/{id}', [AnnonceController::class, 'update'])->name('annonces.update')->middleware('auth');
+Route::delete('/annonces/{id}', [AnnonceController::class, 'destroy'])->name('annonces.destroy')->middleware('auth');
 Route::get('/listings/{id}', [AnnonceController::class, 'show'])->name('annonces.show');
+
+// Routes pour les favoris
+Route::post('/favoris/{annonce}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+Route::middleware('auth')->group(function () {
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+});
+
+// Routes pour l'administration
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('/users/{user}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('users.toggleAdmin');
+});

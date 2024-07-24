@@ -26,7 +26,7 @@
     <!-- Section de recherche -->
     <section class="search-section container mt-5">
         <h1 class="text-center mb-4 white-text">Recherche de biens immobiliers</h1>
-        <form action="{{ url('/search') }}" method="GET" class="form-row justify-content-center">
+        <form action="{{ url('/listings') }}" method="GET" class="form-row justify-content-center">
             <div class="form-group col-md-12 text-center">
                 <label for="transaction" class="mr-3">Transaction:</label>
                 <div class="form-check form-check-inline">
