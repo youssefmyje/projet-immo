@@ -25,17 +25,23 @@
     <!-- Section de recherche -->
     <section class="search-section container mt-5">
         <h1 class="text-center mb-4">Recherche de biens immobiliers</h1>
-        <form action="{{ route('listings.search') }}" method="GET" class="form-inline mb-4">
-            <div class="form-group col-md-12 text-center">
-                <label for="transaction" class="mr-3">Transaction:</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="buy" name="transaction" value="acheter">
-                    <label class="form-check-label" for="buy">Acheter</label>
+        <form action="{{ route('listings.search') }}" method="GET" class="form-row justify-content-center">
+            <div class="form-group col-md-12">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <label for="transaction" class="mr-3">Transaction:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="buy" name="transaction" value="acheter">
+                            <label class="form-check-label" for="buy">Acheter</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="rent" name="transaction" value="louer">
+                            <label class="form-check-label" for="rent">Louer</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="rent" name="transaction" value="louer">
-                    <label class="form-check-label" for="rent">Louer</label>
-                </div>
+            </div>
+
             </div>
             <div class="form-group col-md-3">
                 <label for="location">Localisation:</label>
@@ -57,11 +63,11 @@
 
     <!-- Affichage des annonces -->
     <section class="annonces-section container mt-5">
-        <h2 class="text-center">Nos dernières annonces</h2>
+        <h2 class="text-center mb-4">Nos dernières annonces</h2>
         <div class="row">
             @foreach($annonces as $annonce)
             <div class="col-md-4">
-                <div class="annonce card mb-4">
+                <div class="annonce card mb-4 shadow-sm border-0 rounded">
                     @if($annonce->photos)
                     @php
                     $photos = json_decode($annonce->photos);
@@ -71,7 +77,7 @@
                         <div class="carousel-inner">
                             @foreach($photos as $index => $photo)
                             <div class="carousel-item @if($index == 0) active @endif">
-                                <img src="{{ asset('photos/' . $photo) }}" class="d-block w-100" alt="Image de l'annonce">
+                                <img src="{{ asset('photos/' . $photo) }}" class="d-block w-100 rounded-top" alt="Image de l'annonce">
                             </div>
                             @endforeach
                         </div>
@@ -86,18 +92,21 @@
                     </div>
                     @endif
                     @else
-                    <img src="{{ asset('photos/default.jpg') }}" alt="Image de l'annonce" class="d-block w-100" style="height: 300px; object-fit: cover;">
+                    <img src="{{ asset('photos/default.jpg') }}" alt="Image de l'annonce" class="d-block w-100 rounded-top" style="height: 300px; object-fit: cover;">
                     @endif
                     <div class="card-body">
                         <h3 class="card-title">{{ $annonce->titre }}</h3>
                         <p class="card-text">{{ $annonce->description }}</p>
-                        <a href="{{ url('/listings/' . $annonce->id) }}" class="btn btn-link">Voir les détails</a>
+                        <a href="{{ url('/listings/' . $annonce->id) }}" class="btn btn-primary btn-block">Voir les détails</a>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
     </section>
+
+
+
 
     <!-- Présentation de l'agence -->
     <section class="additional-section container mt-5">

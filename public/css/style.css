@@ -553,3 +553,55 @@ h1, h2, h3 {
     padding: 10px;
     border-radius: 5px;
 }
+
+
+
+ .annonce.card {
+     background-color: #e7f0f7; /* Bleu clair */
+     transition: transform 0.2s; /* Animation douce au survol */
+ }
+
+.annonce.card:hover {
+    transform: scale(1.05); /* Effet zoom au survol */
+    background-color: #d6eaf5; /* Légèrement plus clair au survol */
+}
+
+.annonce .card-body {
+    padding: 20px; /* Espace intérieur */
+}
+
+.annonce .card-title {
+    font-size: 1.5rem;
+    color: #2a678c; /* Bleu foncé */
+}
+
+.annonce .card-text {
+    color: #3f7ea3; /* Bleu moyen */
+}
+
+.btn-primary {
+    background-color: #688d4e; /* Vert moyen */
+    border-color: #688d4e;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #a0b348; /* Vert clair */
+    border-color: #8fa73d;
+}
+
+.carousel-inner img {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.annonce .card {
+    border-radius: 10px; /* Arrondir les bords des cartes */
+    overflow: hidden; /* Assurer que les images s'adaptent bien aux bords arrondis */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Rendre les icônes de contrôle de carrousel blanches */
+}
