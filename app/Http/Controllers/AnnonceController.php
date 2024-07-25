@@ -127,8 +127,9 @@ class AnnonceController extends Controller
         $query = Annonce::query();
 
         if ($request->filled('transaction')) {
-            Log::info('Filtering by transaction:', [$request->transaction]);
-            $query->where('type', $request->transaction);
+            $transactionType = $request->transaction === 'acheter' ? 'vendre' : $request->transaction;
+            Log::info('Filtering by transaction:', [$transactionType]);
+            $query->where('type', $transactionType);
         }
 
         if ($request->filled('location')) {
