@@ -15,6 +15,9 @@ WORKDIR /var/www
 # Copier les fichiers du projet
 COPY . .
 
+# Assurer que le dossier vendor et cache existent
+RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
+
 # Installer les dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader
 
